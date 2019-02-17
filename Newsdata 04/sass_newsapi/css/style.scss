@@ -1,0 +1,155 @@
+$header-color1: rgb(211, 0, 0);
+$header-color2: rgb(255, 255, 255);
+$header-color3: rgb(255, 86, 114);
+$header-color4: rgb(85, 173, 255);
+$BGcolor:rgb(0, 0, 0);
+$BGcolor-gradient:linear-gradient(to left, #000000, #390e19, #6d0620, #a2001c, #d30000);
+$header-font1: 'Ubuntu', sans-serif;
+$header-font2: 'Titillium Web', sans-serif;
+$font-W1: 700i;
+$font-W2: 400;
+$font-W3: 300;
+$font-S1: 55px;
+$font-S2: 25px;
+$font-S3: 18px;
+$font-S4: 15px;
+$UpperCase: uppercase;
+$Wspace: 0.05em;
+$Element1:15px;
+$Element2:10px;
+$Element3:8px;
+
+@mixin h1font {
+    color: $header-color1;
+    font-family: $header-font1;
+    font-weight: $font-W1;
+    font-size: $font-S1;
+    text-transform: $UpperCase;
+}
+
+@mixin h2font {
+    color: $header-color2;
+    font-family: $header-font1;
+    font-weight: $font-W2;
+    font-size: $font-S2;
+    text-transform: $UpperCase;
+    word-spacing: $Wspace;
+}
+
+@mixin h3font {
+    color: $header-color2;
+    font-family: $header-font2;
+    font-weight: $font-W3;
+    font-size: $font-S3;
+}
+
+@mixin pfont {
+    color: $BGcolor;
+    font-family: $header-font2;
+    font-weight: $font-W3;
+    font-size: $font-S4;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}    
+
+
+@keyframes slideInLeft{
+    from {
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+
+@keyframes slideInRight{
+    from {
+        right: -2000px
+    }
+    to {
+        right: 0px; 
+    }
+}
+
+@keyframes reveal{
+    0%{
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    margin: $Element3 0px $Element3 $Element3;
+    padding: $Element2 0px $Element2 20px;
+    height: 2000px;
+}
+
+h1 {
+    @include h1font();
+    animation: slideInLeft 2s ease-in-out -0.8s 1 normal;
+    opacity: 0.7;
+}
+
+h2 {
+    position: relative;
+    margin: 18px 0px;
+    @include h2font();
+    @include transition(color .3s ease-in);
+        &:hover {
+            color: $BGcolor;
+        }
+    animation: reveal 2.8s ease-in -1s 1 normal;
+}
+
+h3 {
+    position: absolute;
+    top: 120px;
+    width: 500px;
+    left: 500px;
+    @include h3font();
+    animation: reveal 3s ease-in -0.8s 1 normal;
+    margin: 14px 0px;
+}
+
+p {
+    position: relative;
+    @include pfont();
+    animation: reveal 3.1s ease-in -0.6s 1 normal;
+    margin: $Element2 0px;
+}
+
+img {
+    animation: reveal 3.5s ease-in -0.3s 1 normal;
+    border-radius: $Element1;
+}
+
+div {
+    
+    div{
+        
+        div{
+            background-image:$BGcolor-gradient;
+            opacity: 0.7;
+            border-radius: 10px 0px 0px 100px;
+            padding: 15px 300px 20px 70px;
+            margin: $Element2 0px $Element2 $Element2;
+            animation: slideInRight 2s ease-in-out -0.6s 1 normal;
+            position: relative;
+        }
+    }
+}
+
+a:link{
+    text-decoration: none;
+}
